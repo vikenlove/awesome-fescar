@@ -1,7 +1,7 @@
 ---
 title: Seata笔记-1
 author: vikenlove（大菲.Fei）
-date: 2019/04/23
+date: 2019/07/25
 keywords: seata、分布式事务、高可用、seata教程
 ---
 # Seata 的起源
@@ -38,3 +38,11 @@ file.conf
 registry.conf    
 为什么我们的客户端也需要这两个文件呢？原因很简单。服务端的registry.conf是当seata-server 以微服务形势启动后，需要让注册服务中心、即：nacos、zookeeper、知道我的服务的provider是谁。而客户端上registry.conf 同样是让当前客户端知道我对应注册的地址是哪  
 而file.conf则是相关配置信息文件，后面具体提到。
+
+### 第二章：配置详细
+>registry.conf其中包含两部分：注册服务配置 & 配置中心配置
+>>registry：注册服务配置目前支持：file 、nacos 、eureka、redis、zk、consul、etcd3、sofa  
+>>config：配置中心服务目前支持：file、nacos 、apollo、zk、consul、etcd3  
+
+所有配置的指定方式均通过：  type = "nacos" type=指定值，进行响应服务的指定。这里的file只的是以本地file文件形式进行注册存储，也就是我们seata-server中需要用到的file.conf中的内容
+
